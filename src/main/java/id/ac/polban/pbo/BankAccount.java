@@ -36,6 +36,15 @@ public class BankAccount {
         balance -= amount;
     }
 
+    public void transfer(BankAccount target, double amount)
+            throws InsufficientBalanceException {
+        if (target == null)
+            throw new IllegalArgumentException(
+                "Rekening tujuan wajib diisi");
+        withdraw(amount);
+        target.deposit(amount);
+    }
+
     public String getAccountNumber() { return accountNumber; }
     public String getOwner() { return owner; }
     public double getBalance() { return balance; }

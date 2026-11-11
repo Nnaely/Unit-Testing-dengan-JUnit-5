@@ -96,4 +96,16 @@ class BankAccountTest {
 
         assertEquals(sisa, acc.getBalance(), 0.001);
     }
+
+    // ===== Praktikum V - Mini TDD =====
+
+    @Test
+    void transfer_targetNull_ditolak() {
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> sender.transfer(null, 20_000)
+        );
+
+        assertEquals(100_000, sender.getBalance(), 0.001);
+    }
 }
