@@ -25,6 +25,17 @@ public class BankAccount {
         balance += amount;
     }
 
+    public void withdraw(double amount)
+            throws InsufficientBalanceException {
+        if (amount <= 0)
+            throw new IllegalArgumentException(
+                "Jumlah penarikan harus lebih dari 0");
+        if (amount > balance)
+            throw new InsufficientBalanceException(
+                "Saldo tidak mencukupi");
+        balance -= amount;
+    }
+
     public String getAccountNumber() { return accountNumber; }
     public String getOwner() { return owner; }
     public double getBalance() { return balance; }
