@@ -1,0 +1,31 @@
+package id.ac.polban.pbo;
+
+public class BankAccount {
+    private final String accountNumber;
+    private final String owner;
+    protected double balance;
+
+    public BankAccount(String accountNumber, String owner,
+                       double initialBalance) {
+        if (accountNumber == null || accountNumber.isBlank())
+            throw new IllegalArgumentException(
+                "Nomor rekening wajib diisi");
+        if (initialBalance < 0)
+            throw new IllegalArgumentException(
+                "Saldo awal tidak boleh negatif");
+        this.accountNumber = accountNumber;
+        this.owner = owner;
+        this.balance = initialBalance;
+    }
+
+    public void deposit(double amount) {
+        if (amount <= 0)
+            throw new IllegalArgumentException(
+                "Jumlah setoran harus lebih dari 0");
+        balance += amount;
+    }
+
+    public String getAccountNumber() { return accountNumber; }
+    public String getOwner() { return owner; }
+    public double getBalance() { return balance; }
+}
